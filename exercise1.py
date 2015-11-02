@@ -14,13 +14,26 @@ __license__ = "MIT License"
 
 def pig_latinify(word):
     """
-    Describe your function
+    takes input from user
+    check IF there is a vowel at beginning
+        do this
+    ELSE
+        do this
+    print result
 
     :param :
     :return:
     :raises:
 
     """
-    result = ""
+    if word.isalpha() == False:
+        print("Please enter only alphabetic letters. ")
+    elif word[0] in ("a", "e", "i", "o", "u"):
+        result = word + "yay"
+    else:
+        while word[0] not in ("a", "e", "i", "o", "u"):
+            word = word[1:] + word[0]
+            result = word + "ay"
+    print(result)
 
-    return result
+pig_latinify("blue")
