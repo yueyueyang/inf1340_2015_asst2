@@ -27,7 +27,7 @@ def pig_latinify(word):
 
     """
     if word.isalpha() == False:
-        print("Please enter only alphabetic letters. ")
+        return AssertionError
     elif word[0] in ("a", "e", "i", "o", "u"):
         result = word + "yay"
     else:
@@ -36,4 +36,4 @@ def pig_latinify(word):
             result = word + "ay"
     print(result)
 
-pig_latinify("blue")
+#pig_latinify()
