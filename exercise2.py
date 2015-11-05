@@ -51,7 +51,7 @@ def multi_find(input_string, substring, start, end):
     Searching for multi index of the object string.
     :param : string-insert form function call
     :return: multi index
-    :raises: 
+    :raises:
 
     """
     # calculate the lengths of input string and substring.
@@ -82,5 +82,8 @@ def multi_find(input_string, substring, start, end):
         output_string = output_string[1:]
 
     return output_string
+
+#find()
+#multi_find()
 
 
