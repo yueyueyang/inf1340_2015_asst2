@@ -37,7 +37,7 @@ def test_word_containing_nothing():
 
 
 def test_word_with_no_vowels():
-    for word in word_containing_nothing:
+    for word in word_with_no_vowels:
         assert pig_latinify("rhythm") == "mhtyhray"
 
 if __name__ == "__main__":
