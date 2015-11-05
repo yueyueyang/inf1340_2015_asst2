@@ -23,7 +23,7 @@ def pig_latinify(word):
     else:
         if check_for_any_vowels(word) == 0:
             result = word[::-1] + "ay"
-    print result
+    return result
 
 #figures out where the first vowel is
 def get_first_vowel_position(word):
