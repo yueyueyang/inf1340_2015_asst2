@@ -16,22 +16,20 @@ word_with_no_vowels = ["rhythm"]
 # TEST FUNCTIONS ##
 ###################
 
-def test_word_starting_with_vowel():
-    for word in word_starting_with_vowel:
-        assert pig_latinify("apple") == "appleyay"
-
-
-def test_word_starting_with_vowel_2():
-    for word in word_starting_with_vowel:
-        assert pig_latinify("is") == "isyay"
-
-
-def test_word_starting_with_consonant():
-    for word in word_starting_with_consonant:
-        assert pig_latinify("scratch") == "atchscray"
+def test_basic():
+    """
+    Basic test cases from assignment hand out
+    """
+    assert pig_latinify("dog") == "ogday"
+    assert pig_latinify("scratch") == "atchscray"
+    assert pig_latinify("is") == "isyay"
+    assert pig_latinify("apple") == "appleyay"
 
 
 def test_word_containing_alphanumeric():
+    """
+    Tests alphanumeric input
+    """
     for word in word_containing_alphanumeric:
         try:
             pig_latinify("HE90LLO")
@@ -39,16 +37,9 @@ def test_word_containing_alphanumeric():
             assert True
 
 def test_word_with_no_vowels():
+    """
+    tests words with no vowels
+    """
     for word in word_with_no_vowels:
         assert pig_latinify("rhythm") == "rhythmay"
 
-###################
-# FUNCTION CALLS ##
-###################
-
-if __name__ == "__main__":
-    test_word_containing_alphanumeric()
-    test_word_starting_with_consonant()
-    test_word_starting_with_vowel()
-    test_word_starting_with_vowel_2()
-    test_word_with_no_vowels()

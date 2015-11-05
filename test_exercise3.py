@@ -53,7 +53,7 @@ def is_equal(t1, t2):
 ###################
 def test_union():
     """
-    Test union operation.
+    Test union operation and checks for duplicates.
     """
 
     result = [["Number", "Surname", "Age"],
@@ -64,13 +64,24 @@ def test_union():
 
     assert is_equal(result, union(GRADUATES, MANAGERS))
 
-def test_columns_unequal():
+
+def test_lengths_equal():
+    """
+    This is a function that tests if the table column lengths are equal
+    """
     assert is_equal(PROFESSORS, GRADUATES) == False
+
+
+def test_names_equal():
+    """
+    A function that tests if the names of the columns are equal
+    """
     assert is_equal(FACULTY_ADMINISTRATION, GRADUATES)== False
+
 
 def test_intersection():
     """
-    Test intersection operation.
+    Test intersection operation and shows all unique rows from both tables
     """
     result = [["Number", "Surname", "Age"],
               [7432, "O'Malley", 39],
@@ -81,7 +92,7 @@ def test_intersection():
 
 def test_difference():
     """
-    Test difference operation.
+    Test difference operation and shows all unique rows in Graduates
     """
 
     result = [["Number", "Surname", "Age"],
