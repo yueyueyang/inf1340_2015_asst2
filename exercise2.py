@@ -24,8 +24,6 @@ def find(input_string, substring, start, end):
     input_length = len(input_string)
     search_length = len(substring)
 
-    real_end = end
-
     # Test if the length between end and search is less than the length of start string.
     if end - search_length < start:
         return -1
