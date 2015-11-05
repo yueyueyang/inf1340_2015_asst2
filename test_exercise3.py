@@ -27,6 +27,19 @@ MANAGERS = [["Number", "Surname", "Age"],
             [7432, "O'Malley", 39],
             [9824, "Darkes", 38]]
 
+PROFESSORS = [["Number", "Surname", "Age", "Gender"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
+
+FACULTY_ADMINISTRATION = [["Number", "Name", "Age"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
+
+
+from exercise3 import union, intersection, difference
+
 
 #####################
 # HELPER FUNCTIONS ##
@@ -51,6 +64,9 @@ def test_union():
 
     assert is_equal(result, union(GRADUATES, MANAGERS))
 
+def test_columns_unequal():
+    assert is_equal(PROFESSORS, GRADUATES) == False
+    assert is_equal(FACULTY_ADMINISTRATION, GRADUATES)== False
 
 def test_intersection():
     """
