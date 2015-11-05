@@ -83,7 +83,7 @@ def multi_find(input_string, substring, start, end):
 
     return output_string
 
-#find()
+print find("This is an ex-parrot", "parrot", 0, 20)
 #multi_find()
 
 
