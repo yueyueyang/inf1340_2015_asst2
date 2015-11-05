@@ -21,21 +21,26 @@ def pig_latinify(word):
         do this
     print result
 
-    :param : word - inserted from function call
-    :return: pig latin
-    :raises: "Please only enter alphabetic characters."
+    :param :
+    :return:
+    :raises:
 
     """
     word = word.lower()
-    if word.isalpha() == False:
-        print "Please only enter alphabetic characters. "
-        return False
+    if not word:
+        result = "Please enter a word."
+    elif word.isalpha() == False:
+        result = "Please only enter alphabetic characters."
     elif word[0] in ("a", "e", "i", "o", "u"):
         result = word + "yay"
-    else:
-        while word[0] not in ("a", "e", "i", "o", "u"):
+    elif word[0] not in ("a", "e", "i", "o", "u"):
             word = word[1:] + word[0]
             result = word + "ay"
+    else:
+        if ("a", "e", "i", "o", "u") not in word:
+            count = len(word)
+            for i in range(count):
+                result = word[count-i-1] + "ay"
     return result
 
-print pig_latinify("apple")
+print pig_latinify("rhythm")
