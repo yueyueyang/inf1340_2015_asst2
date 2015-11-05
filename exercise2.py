@@ -70,7 +70,7 @@ def multi_find(input_string, substring, start, end):
         real_end = input_length
 
     # Search for multi occurrence of object string.
-    for i in range(start, real_end - search_length):
+    for i in range(start, real_end - search_length + 1):
         if input_string[i:i+search_length] == substring:
             output_string += "," + str(i)
 
@@ -79,7 +79,6 @@ def multi_find(input_string, substring, start, end):
 
     return output_string
 
-print find("This is an ex-parrot", "parrot", 0, 20)
+#find()
 #multi_find()
-
 
