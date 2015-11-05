@@ -36,12 +36,10 @@ def find(input_string, substring, start, end):
 
     # Test if the length of end is greater or equal to the length of input string.
     if end >= input_length:
-        real_end = input_length
-
     # Search for the occurrence of object string.
-    for i in range(start, real_end - search_length):
-        if input_string[i:i+search_length] == substring:
-            return i
+        for i in range(start, input_length):
+            if input_string[i:i+search_length] == substring:
+                return i
 
     return -1
 
