@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-
-""" Assignment 2, Exercise 1, INF1340, Fall, 2015. Pig Latin
-
-Test module for exercise1.py
-
-"""
-
 import pytest
 import mock
 from exercise1 import pig_latinify
