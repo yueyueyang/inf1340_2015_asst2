@@ -23,7 +23,18 @@ def union(table1, table2):
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
-    return []
+
+    if table1[0] != table2[0]:
+        raise Exception('MismatchedAttributesException')
+    else:
+        newtable = []
+        for i in range(len(table1)):
+            newtable.append(table1[i])
+        for i in range(1,len(table2)):
+            newtable.append(table2[i])
+        return newtable
+
+
 
 
 def intersection(table1, table2):
@@ -31,7 +42,19 @@ def intersection(table1, table2):
     Describe your function
 
     """
-    return []
+
+    if table1[0] != table2[0]:
+        raise Exception('MismatchedAttributesException')
+    else:
+        newtable = []
+        newtable.append(table1[0])
+        for i in range(1,len(table1)):
+            for j in range(1,len(table2)):
+                if table1[i] == table2[j]:
+                    newtable.append(table1[i])
+        return newtable
+
+
 
 
 def difference(table1, table2):
@@ -39,7 +62,24 @@ def difference(table1, table2):
     Describe your function
 
     """
-    return []
+
+    if table1[0] != table2[0]:
+        raise Exception('MismatchedAttributesException')
+    else:
+        newtable = []
+        newtable.append(table1[0])
+
+        for i in range(1, len(table1)):
+            flag = False
+            for j in range(1, len(table2)):
+                if table1[i] == table2[j]:
+                    flag = True
+                    break
+            if flag == False:
+                newtable.append(table1[i])
+
+        return newtable
+
 
 
 #####################
