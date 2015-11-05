@@ -17,20 +17,20 @@ def find(input_string, substring, start, end):
     Searching for the index of the object string.
     :param : string-insert form function call
     :return: index
-    :raises:
+    :raises: -1
 
     """
     # calculate the lengths of input string and substring.
-
     input_length = len(input_string)
     search_length = len(substring)
 
-    # Test if the length between end and search is less than the length of start string.
     real_end = end
 
+    # Test if the length between end and search is less than the length of start string.
     if end - search_length < start:
         return -1
 
+    # Test if the length of start string is greater than the length of input string.
     if start > input_length:
         return -1
 
@@ -39,7 +39,6 @@ def find(input_string, substring, start, end):
         real_end = input_length
 
     # Search for the occurrence of object string.
-
     for i in range(start, real_end - search_length):
         if input_string[i:i+search_length] == substring:
             return i
@@ -49,11 +48,10 @@ def find(input_string, substring, start, end):
 
 def multi_find(input_string, substring, start, end):
     """
-    Describe your function
-
-    :param :
-    :return:
-    :raises:
+    Searching for multi index of the object string.
+    :param : string-insert form function call
+    :return: multi index
+    :raises: -1
 
     """
     # calculate the lengths of input string and substring.
@@ -77,7 +75,7 @@ def multi_find(input_string, substring, start, end):
     if end >= input_length:
         real_end = input_length
 
-    # Search for the occurrence of object string.
+    # Search for multi occurrence of object string.
 
     for i in range(start, real_end - search_length):
         if input_string[i:i+search_length] == substring:
