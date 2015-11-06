@@ -38,7 +38,6 @@ def find(input_string, substring, start, end):
         for i in range(start, input_length):
             if input_string[i:i+search_length] == substring:
                 return i
-
     return -1
 
 
@@ -76,7 +75,6 @@ def multi_find(input_string, substring, start, end):
 
     if output_string != "":
         output_string = output_string[1:]
-
     return output_string
 
 #find()
