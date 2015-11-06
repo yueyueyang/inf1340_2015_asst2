@@ -69,20 +69,22 @@ def test_lengths_equal():
     """
     This is a function that tests if the table column lengths are equal
     """
-    assert is_equal(PROFESSORS, GRADUATES) == False
+    assert is_equal(PROFESSORS, GRADUATES) is False
 
 
 def test_names_equal():
     """
     A function that tests if the names of the columns are equal
     """
-    assert is_equal(FACULTY_ADMINISTRATION, GRADUATES)== False
+    assert is_equal(FACULTY_ADMINISTRATION, GRADUATES) is False
 
 
 def test_intersection():
     """
-    Test intersection operation and shows all unique rows from both tables
+    Test intersection function and show all unique rows from t1 and t2
+
     """
+
     result = [["Number", "Surname", "Age"],
               [7432, "O'Malley", 39],
               [9824, "Darkes", 38]]

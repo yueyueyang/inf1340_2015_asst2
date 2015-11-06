@@ -6,44 +6,25 @@ This module performs table operations on database tables
 implemented as lists of lists.
 
 """
-# GRADUATES = [["Number", "Surname", "Age"],
-#              [7274, "Robinson", 37],
-#              [7432, "O'Malley", 39],
-#              [9824, "Darkes", 38]]
-#
-# MANAGERS = [["Number", "Surname", "Age"],
-#             [1800, "Shah", 56],
-#             [5607, "Shah", 39],
-#             [7274, "Robinson", 37]]
-#
-# PROFESSORS = [["Number", "Surname", "Age", "Gender"],
-#              [9087, "Yashvi", 43],
-#              [2345, "Anirudh", 44],
-#              [1234, "Aditi", 45]]
-#
-# FACULTY_ADMINISTRATION = [["Number", "Name", "Age"],
-#              [7777, "Christina", 12],
-#              [8888, "Courtney", 13],
-#              [9090, "Lena", 14]]
-#####################
-# HELPER FUNCTIONS ##
-#####################
+GRADUATES = [["Number", "Surname", "Age"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
 
+MANAGERS = [["Number", "Surname", "Age"],
+            [9297, "O'Malley", 56],
+            [7432, "O'Malley", 39],
+            [9824, "Darkes", 38]]
 
-def remove_duplicates(l):
-    """
-    Removes duplicates from l, where l is a List of Lists.
-    :param l: a List
-    """
+PROFESSORS = [["Number", "Surname", "Age", "Gender"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
 
-    d = {}
-    result = []
-    for row in l:
-        if tuple(row) not in d:
-            result.append(row)
-            d[tuple(row)] = True
-
-    return result
+FACULTY_ADMINISTRATION = [["Number", "Name", "Age"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
 
 
 class MismatchedAttributesException(Exception):
@@ -54,65 +35,89 @@ class MismatchedAttributesException(Exception):
     pass
 
 
+def check_schema_and_length(t1, t2):
+    """
+    Tests if two lists/tables are equal in size and have the same schemas
+
+    :param: two lists of lists from intersection, difference and union functions
+    :return: true if tables are equal, false if unequal
+    :raises:
+    """
+
+    t1_header = t1[0]
+    t2_header = t2[0]
+    t1_header_length = len(t1_header)
+    t2_header_length = len(t2_header)
+    header_lengths_final = False
+    header_names_final = False
+
+    if t1_header_length == t2_header_length:
+        header_lengths_final = True
+
+    if t1_header == t2_header:
+        header_names_final = True
+
+    if header_names_final and header_lengths_final == True:
+        result = True
+
+    return result
+
 def union(table1, table2):
     """
     Perform the union set operation on tables, table1 and table2.
 
-    :param table1: a table (a List of Lists)
-    :param table2: a table (a List of Lists)
+    :param table1: a table (a List of Lists), table2: a table (a List of Lists)
     :return: the resulting table
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
-    if table1[0] != table2[0]:
+    if not check_schema_and_length(table1, table2):
         raise Exception('MismatchedAttributesException')
     else:
-        new_list=table1
-        for i in range(len(table2)):
+        new_table=table1
+        for i in range(0, len(table2)):
             if table2[i] not in table1:
-                new_list.append(table2[i])
-    return new_list
+                new_table.append(table2[i])
+    return new_table
 
 
 def intersection(table1, table2):
     """
     Perform the intersection set operation on tables, table1 and table2.
 
-    :param table1: a table (a List of Lists)
-    :param table2: a table (a List of Lists)
+    :param table1: a table (a List of Lists), table2: a table (a List of Lists)
     :return: the resulting table
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
-    if table1[0] != table2[0]:
+    if not check_schema_and_length(table1, table2):
         raise Exception('MismatchedAttributesException')
     else:
-        new_list = []
-    for i in range(len(table2)):
+        new_table = []
+    for i in range(0, len(table2)):
         if table2[i] in table1:
-            new_list.append(table2[i])
-    return new_list
+            new_table.append(table2[i])
+    return new_table
 
 
 def difference(table1, table2):
     """
     Perform the difference set operation on tables, table1 and table2.
 
-    :param table1: a table (a List of Lists)
-    :param table2: a table (a List of Lists)
+    :param table1: a table (a List of Lists), table2: a table (a List of Lists)
     :return: the resulting table
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
-    if table1[0] != table2[0]:
+    if not check_schema_and_length(table1, table2):
         raise Exception('MismatchedAttributesException')
     else:
-        new_list = []
-        for i in range(len(table1)):
+        new_table = [table1[0]]
+        for i in range(1, len(table1)):
             if table1[i] not in table2:
-                new_list.append(table1[i])
-        return new_list
+                new_table.append(table1[i])
+    return new_table
 
 #union(GRADUATES, MANAGERS)
-#intersection(GRADUATES, MANAGERS)
-#difference(GRADUATES, MANAGERS)
+#print intersection(GRADUATES, MANAGERS)
+#print difference(GRADUATES, MANAGERS)
