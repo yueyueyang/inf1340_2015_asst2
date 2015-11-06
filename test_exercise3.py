@@ -11,6 +11,8 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
+import pytest
+import mock
 from exercise3 import union, intersection, difference
 
 
@@ -30,7 +32,8 @@ MANAGERS = [["Number", "Surname", "Age"],
 PROFESSORS = [["Number", "Surname", "Age", "Gender"],
              [7274, "Robinson", 37],
              [7432, "O'Malley", 39],
-             [9824, "Darkes", 38]]
+             [9824, "Darkes", 38],
+             [4343, "Susan", 35]]
 
 FACULTY_ADMINISTRATION = [["Number", "Name", "Age"],
              [7274, "Robinson", 37],
@@ -44,8 +47,9 @@ from exercise3 import union, intersection, difference
 #####################
 # HELPER FUNCTIONS ##
 #####################
+
 def is_equal(t1, t2):
-    return set(map(tuple, t1)) == set(map(tuple, t2))
+    return t1.sort() == t2.sort()
 
 
 ###################
@@ -69,14 +73,15 @@ def test_lengths_equal():
     """
     This is a function that tests if the table column lengths are equal
     """
-    assert is_equal(PROFESSORS, GRADUATES) is False
-
+    with pytest.raises(Exception):
+        union(PROFESSORS, GRADUATES)
 
 def test_names_equal():
     """
     A function that tests if the names of the columns are equal
     """
-    assert is_equal(FACULTY_ADMINISTRATION, GRADUATES) is False
+    with pytest.raises(Exception):
+        union(FACULTY_ADMINISTRATION, GRADUATES)
 
 
 def test_intersection():
