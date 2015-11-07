@@ -48,7 +48,7 @@ def intersection(table1, table2):
             i += 1
     # if there is only one unique row found (headers), new_table set to empty list
     if len(new_table) == 1:
-        new_table = []
+        new_table = None
     return new_table
 
 
@@ -102,10 +102,10 @@ def difference(table1, table2):
                 i += 1
         # if there is only one unique row found (headers), new_table set to empty list
         if len(new_table) == 1:
-            new_table = []
+            new_table = None
     return new_table
 
 
-# union(GRADUATES, STUDENTS)
-# intersection(GRADUATES, STUDENTS)
-# difference(GRADUATES, MANAGERS)
+#print union(GRADUATES, STUDENTS)
+#print intersection(GRADUATES, CLASSES)
+#print difference(GRADUATES, STUDENTS)
