@@ -16,6 +16,28 @@ class MismatchedAttributesException(Exception):
     pass
 
 
+def union(table1, table2):
+    """
+    Perform the union set operation on tables, and return rows appearing in EITHER tables
+
+
+    :param table1: a table (a List of Lists)
+    :param table2: a table (a List of Lists)
+    :return: the resulting table
+    :raises: MismatchedAttributesException:
+        if tables t1 and t2 don't have the same attributes
+    """
+    new_table = []
+    if table1[0] != table2[0]:
+        raise Exception('MismatchedAttributesException')
+    else:
+        for i in range(0, len(table1)):
+            new_table.append(table1[i])
+        for i in range(0, len(table2)):
+            if table2[i] not in table1:
+                new_table.append(table2[i])
+    return new_table
+
 def intersection(table1, table2):
 
     """
@@ -49,29 +71,6 @@ def intersection(table1, table2):
     # if there is only one unique row found (headers), new_table set to empty list
     if len(new_table) == 1:
         new_table = None
-    return new_table
-
-
-def union(table1, table2):
-    """
-    Perform the union set operation on tables, and return rows appearing in EITHER tables
-
-
-    :param table1: a table (a List of Lists)
-    :param table2: a table (a List of Lists)
-    :return: the resulting table
-    :raises: MismatchedAttributesException:
-        if tables t1 and t2 don't have the same attributes
-    """
-    new_table = []
-    if table1[0] != table2[0]:
-        raise Exception('MismatchedAttributesException')
-    else:
-        for i in range(0, len(table1)):
-            new_table.append(table1[i])
-        for i in range(0, len(table2)):
-            if table2[i] not in table1:
-                new_table.append(table2[i])
     return new_table
 
 

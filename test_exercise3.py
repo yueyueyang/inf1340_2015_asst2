@@ -68,22 +68,6 @@ def is_equal(t1, t2):
 ###################
 
 
-def test_intersection():
-    """
-    Test intersection function and show all unique rows from t1 and t2
-
-    """
-    result = [["Number", "Surname", "Age"],
-              [7432, "O'Malley", 39],
-              [9824, "Darkes", 38]]
-
-    assert is_equal(result, intersection(GRADUATES, MANAGERS))
-
-    result2 = [['Number', 'Surname', 'Age'], [7274, 'Robinson', 37], [7432, "O'Malley", 39], [9824, 'Darkes', 38]]
-    assert is_equal(result2, intersection(GRADUATES, STUDENTS))
-
-    assert intersection(GRADUATES, CLASSES) is None
-
 def test_union():
     """
     Test union operation and checks for duplicates.
@@ -99,6 +83,24 @@ def test_union():
 
     result2 = [["Number", "Surname", "Age"], [7274, "Robinson", 37], [7432, "O'Malley", 39], [9824, "Darkes", 38]]
     assert is_equal(result2, union(GRADUATES, STUDENTS))
+
+
+def test_intersection():
+    """
+    Test intersection function and show all unique rows from t1 and t2
+
+    """
+    result = [["Number", "Surname", "Age"],
+              [7432, "O'Malley", 39],
+              [9824, "Darkes", 38]]
+
+    assert is_equal(result, intersection(GRADUATES, MANAGERS))
+
+    result2 = [['Number', 'Surname', 'Age'], [7274, 'Robinson', 37], [7432, "O'Malley", 39], [9824, 'Darkes', 38]]
+    assert is_equal(result2, intersection(GRADUATES, STUDENTS))
+
+    # test output when empty table expected
+    assert intersection(GRADUATES, CLASSES) is None
 
 
 def test_lengths_equal():
@@ -126,6 +128,7 @@ def test_difference():
               [7274, "Robinson", 37]]
     assert is_equal(result, difference(GRADUATES, MANAGERS))
 
+    # test output when empty table expected
     assert difference(GRADUATES, STUDENTS) is None
 
 
