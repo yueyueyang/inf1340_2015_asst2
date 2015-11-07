@@ -112,7 +112,7 @@ def test_lengths_equal():
 
 def test_names_equal():
     """
-    A function that tests if the names of the columns are equal
+    A function that tests if the names and lengths of the first column are equal
     """
     with pytest.raises(Exception):
         union(FACULTY_ADMINISTRATION, GRADUATES)

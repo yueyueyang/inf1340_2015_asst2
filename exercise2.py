@@ -15,8 +15,10 @@ __license__ = "MIT License"
 def find(input_string, substring, start, end):
     """
     Searching for the index of the object string.
-    :param : string-insert form function call
-    :return: index
+    :param : input_string - from function call, larger string
+    :param : substring - from function call, string that we are looking for
+    :param : index where first character of substring can be found
+    :return: index where the last character of substring can be found
     :raises:
 
     """
@@ -34,7 +36,8 @@ def find(input_string, substring, start, end):
 
     # Test if the length of end is greater or equal to the length of input string.
     if end >= input_length:
-    # Search for the occurrence of object string.
+
+        # Search for the occurrence of object string.
         for i in range(start, input_length):
             if input_string[i:i+search_length] == substring:
                 return i
@@ -43,9 +46,12 @@ def find(input_string, substring, start, end):
 
 def multi_find(input_string, substring, start, end):
     """
-    Searching for multi index of the object string.
-    :param : string-insert form function call
-    :return: multi index
+    Searching for the start,end indexes of the object string.
+    :param : input_string - from function call, larger string
+    :param : substring - from function call, string that we are looking for
+    :param : 0 or more indexes where first character of substring can be found
+    :param : 0 or more indexes where last character of substring can be found
+    :return: index[start, end]
     :raises:
 
     """

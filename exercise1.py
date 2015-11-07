@@ -57,4 +57,4 @@ def check_for_any_vowels(word):
                 return 1
         return 0
 
-pig_latinify("apple")
+#pig_latinify("apple")
